@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:la_nation/screens/abonez_vous/abonnez_vous.dart';
+import 'package:la_nation/screens/sidebar/sidebar.dart';
 import 'package:la_nation/widgets/text_widget.dart';
 import '../../constants/colors.dart' as app_color;
 
@@ -59,11 +60,19 @@ class MyAppBar {
                 SizedBox(
                   width: screenWidth * 0.02,
                 ),
-                ImageIcon(
-                  const AssetImage('assets/img/menuw.png'),
-                  color: app_color.primary,
-                  size: screenWidth * 0.07,
-                )
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SideBar()));
+                  },
+                  child: ImageIcon(
+                    const AssetImage('assets/img/menuw.png'),
+                    color: app_color.primary,
+                    size: screenWidth * 0.07,
+                  ),
+                ),
               ],
             ),
           ),

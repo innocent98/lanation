@@ -1,23 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:la_nation/screens/alaune/alaune_item.dart';
+import 'package:intl/intl.dart';
 import 'package:la_nation/screens/news_detail/news_detail.dart';
 import 'package:la_nation/widgets/text_widget.dart';
 import '../../constants/colors.dart' as app_color;
 
 class EnDirect extends StatelessWidget {
-  final News2 item;
+  final String image;
+  final String date;
+  final String text;
+  final int duration;
+  final String author;
+  final String permalink;
 
-  const EnDirect({required this.item, super.key});
+  const EnDirect(
+      {required this.image,
+      required this.author,
+      required this.date,
+      required this.duration,
+      required this.text,
+      required this.permalink,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
+    DateTime dateFormat = DateTime.parse(date);
+
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const NewsDetail()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => NewsDetail(
+                      permalink: permalink,
+                    )));
       },
       child: Row(
         children: [
@@ -28,7 +46,7 @@ class EnDirect extends StatelessWidget {
                 colorFilter: ColorFilter.mode(
                     app_color.black.withOpacity(0.5), BlendMode.srcATop),
                 child: Image.network(
-                  item.image,
+                  image,
                   width: screenWidth * 0.8,
                   height: screenHeight * 0.4,
                   fit: BoxFit.cover,
@@ -48,7 +66,8 @@ class EnDirect extends StatelessWidget {
                         TextWidget(
                             fontSize: screenWidth * 0.035,
                             fontWeight: FontWeight.w400,
-                            text: item.date),
+                            text:
+                                'Le ${DateFormat('dd MMMM, yyyy', 'fr').format(dateFormat)}'),
                         Icon(
                           Icons.bookmark_border,
                           size: screenWidth * 0.06,
@@ -58,18 +77,21 @@ class EnDirect extends StatelessWidget {
                     ),
                     SizedBox(height: screenHeight * 0.02),
                     TextWidget(
-                        fontSize: screenWidth * 0.048,
-                        fontWeight: FontWeight.w600,
-                        text: item.text),
+                      fontSize: screenWidth * 0.048,
+                      fontWeight: FontWeight.w600,
+                      text: text,
+                      overflow: TextOverflow.ellipsis,
+                      maxLine: 3,
+                    ),
                     SizedBox(height: screenHeight * 0.12),
                     TextWidget(
                         fontSize: screenWidth * 0.038,
                         fontWeight: FontWeight.w400,
-                        text: item.author),
+                        text: author),
                     TextWidget(
                         fontSize: screenWidth * 0.03,
                         fontWeight: FontWeight.w400,
-                        text: item.duration)
+                        text: '$duration min de lecture')
                   ],
                 )),
           ]),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:la_nation/screens/settings/font_resize.dart';
 import '../../constants/colors.dart' as app_color;
 
 class BottomNavigation extends StatelessWidget {
@@ -46,7 +47,12 @@ class BottomNavigation extends StatelessWidget {
                           size: screenWidth * 0.065,
                         )),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const FontResize()));
+                        },
                         icon: Icon(
                           Icons.tune,
                           color: app_color.white,

@@ -8,6 +8,8 @@ class TextWidget extends StatelessWidget {
   final double fontSize;
   final double? height;
   final TextAlign? align;
+  final TextOverflow? overflow;
+  final int? maxLine;
 
   const TextWidget(
       {required this.fontSize,
@@ -16,6 +18,8 @@ class TextWidget extends StatelessWidget {
       this.textColor,
       this.height,
       this.align,
+      this.overflow,
+      this.maxLine,
       super.key});
 
   @override
@@ -30,6 +34,8 @@ class TextWidget extends StatelessWidget {
         height: height,
       ),
       textAlign: align,
+      overflow: overflow,
+      maxLines: maxLine,
     );
   }
 }

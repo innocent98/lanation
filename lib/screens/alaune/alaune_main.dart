@@ -6,8 +6,13 @@ import '../../constants/colors.dart' as app_color;
 class AlauneMain extends StatelessWidget {
   final String image;
   final String text;
+  final String permalink;
 
-  const AlauneMain({required this.image, required this.text, super.key});
+  const AlauneMain(
+      {required this.image,
+      required this.text,
+      required this.permalink,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +21,12 @@ class AlauneMain extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const NewsDetail()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => NewsDetail(
+                      permalink: permalink,
+                    )));
       },
       child: Column(
         children: [
@@ -38,7 +47,9 @@ class AlauneMain extends StatelessWidget {
                       child: TextWidget(
                           fontSize: screenWidth * 0.04,
                           fontWeight: FontWeight.w600,
-                          text: text)),
+                          text: text,
+                          overflow: TextOverflow.ellipsis,
+                          maxLine: 2)),
                   const Icon(
                     Icons.bookmark_border,
                     color: app_color.lightBackground,
