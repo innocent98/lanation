@@ -11,18 +11,14 @@ class TabHolder extends StatelessWidget {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    return Container(
-        color: app_color.lightBackground,
-        child: SafeArea(
-          child: Scaffold(
-            backgroundColor: app_color.lightBackground,
-            appBar: MyAppBar.build(context),
-            body: SizedBox(
-              height: screenHeight,
-              width: screenWidth,
-              child: const TabItem(),
-            ),
-          ),
-        ));
+    return Scaffold(
+      backgroundColor: app_color.lightBackground,
+      appBar: MyAppBar.build(context),
+      body: SizedBox(
+        height: screenHeight,
+        width: screenWidth,
+        child: const TabItem(),
+      ),
+    );
   }
 }

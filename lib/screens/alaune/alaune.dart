@@ -13,30 +13,34 @@ class Alaune extends ConsumerWidget {
 
     final data = ref.watch(newsDataProvider);
 
-    return Container(
-      color: app_color.lightBackground,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: app_color.lightBackground,
-          body: SizedBox(
-            width: screenWidth,
-            child: data.when(
-                data: (data) {
-                  return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 1,
-                      itemBuilder: (context, index) {
-                        final currentNews = data!;
-                        return AlauneItem(
-                            item: currentNews, index: index, length: 1);
-                      });
-                  // return null;
-                },
-                error: (err, s) => Text(err.toString()),
-                loading: () => const Center(
-                      child: CircularProgressIndicator(),
-                    )),
-          ),
+    final refresh = ref.refresh(newsDataProvider);
+
+    return Scaffold(
+      backgroundColor: app_color.lightBackground,
+      body: SizedBox(
+        width: screenWidth,
+        child: RefreshIndicator(
+          onRefresh: () async {
+            refresh;
+          },
+          child: data.when(
+              data: (data) {
+                return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 1,
+                    itemBuilder: (context, index) {
+                      final currentNews = data!;
+                      return AlauneItem(
+                          item: currentNews, index: index, length: 1);
+                    });
+                // return null;
+              },
+              error: (err, s) => Text(err.toString()),
+              loading: () => const Center(
+                    child: CircularProgressIndicator(
+                      color: app_color.primary,
+                    ),
+                  )),
         ),
       ),
     );

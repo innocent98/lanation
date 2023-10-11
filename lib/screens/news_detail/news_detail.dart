@@ -16,36 +16,33 @@ class NewsDetail extends ConsumerWidget {
 
     final data = ref.watch(newsDetailDataProvider(permalink!));
 
-    return Container(
-      color: app_color.white,
-      child: SafeArea(
-          child: Scaffold(
-              backgroundColor: app_color.white,
-              body: Stack(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(screenWidth * 0.03,
-                        screenWidth * 0.03, screenWidth * 0.03, 0),
-                    child: data.when(
-                        data: (data) {
-                          return ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: 1,
-                              itemBuilder: (context, index) {
-                                return NewsDetailItem(
-                                  item: data!,
-                                  index: index,
-                                );
-                              });
-                        },
-                        error: (err, s) => Text(err.toString()),
-                        loading: () => const Center(
-                              child: CircularProgressIndicator(),
-                            )),
-                  ),
-                  const BottomNavigation()
-                ],
-              ))),
-    );
+    return Scaffold(
+        backgroundColor: app_color.white,
+        body: Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(screenWidth * 0.03,
+                  screenWidth * 0.03, screenWidth * 0.03, 0),
+              child: data.when(
+                  data: (data) {
+                    return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 1,
+                        itemBuilder: (context, index) {
+                          return NewsDetailItem(
+                            item: data!,
+                            index: index,
+                          );
+                        });
+                  },
+                  error: (err, s) => Text(err.toString()),
+                  loading: () => const Center(
+                        child:
+                            CircularProgressIndicator(color: app_color.primary),
+                      )),
+            ),
+            const BottomNavigation()
+          ],
+        ));
   }
 }

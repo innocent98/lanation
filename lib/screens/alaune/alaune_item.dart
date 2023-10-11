@@ -19,38 +19,11 @@ class AlauneItem extends ConsumerWidget {
   final int index;
   final int length;
 
-  AlauneItem(
+  const AlauneItem(
       {required this.item,
       required this.index,
       required this.length,
       super.key});
-
-  List<News2> news2 = [
-    const News2(
-        author: 'Radji Mouhammed',
-        date: 'Le 29, decembre 2022',
-        duration: '5 min de lecture',
-        image:
-            'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg',
-        text:
-            'Mort de Pelé : les ambiguïtés politiques du « roi » du football, loin des terrains'),
-    const News2(
-        author: 'Radji Mouhammed',
-        date: 'Le 29, decembre 2022',
-        duration: '5 min de lecture',
-        image:
-            'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg',
-        text:
-            'Mort de Pelé : les ambiguïtés politiques du « roi » du football, loin des terrains'),
-    const News2(
-        author: 'Radji Mouhammed',
-        date: 'Le 29, decembre 2022',
-        duration: '5 min de lecture',
-        image:
-            'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg',
-        text:
-            'Mort de Pelé : les ambiguïtés politiques du « roi » du football, loin des terrains'),
-  ];
 
   @override
   Widget build(BuildContext context, ref) {
@@ -218,7 +191,7 @@ class AlauneItem extends ConsumerWidget {
                     height: screenHeight * 0.3,
                     width: screenWidth,
                     child: ListView(
-                      scrollDirection: Axis.horizontal,
+                      scrollDirection: Axis.horizontal, 
                       children: formattedServiceList,
                     ),
                   ),
@@ -245,6 +218,33 @@ class AlauneItem extends ConsumerWidget {
     );
   }
 }
+
+List<News2> news2 = [
+  const News2(
+      author: 'Radji Mouhammed',
+      date: 'Le 29, decembre 2022',
+      duration: '5 min de lecture',
+      image:
+          'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg',
+      text:
+          'Mort de Pelé : les ambiguïtés politiques du « roi » du football, loin des terrains'),
+  const News2(
+      author: 'Radji Mouhammed',
+      date: 'Le 29, decembre 2022',
+      duration: '5 min de lecture',
+      image:
+          'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg',
+      text:
+          'Mort de Pelé : les ambiguïtés politiques du « roi » du football, loin des terrains'),
+  const News2(
+      author: 'Radji Mouhammed',
+      date: 'Le 29, decembre 2022',
+      duration: '5 min de lecture',
+      image:
+          'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg',
+      text:
+          'Mort de Pelé : les ambiguïtés politiques du « roi » du football, loin des terrains'),
+];
 
 class News2 {
   final String image;

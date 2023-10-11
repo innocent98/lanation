@@ -70,7 +70,7 @@ class MyAppBar {
                   child: ImageIcon(
                     const AssetImage('assets/img/menuw.png'),
                     color: app_color.primary,
-                    size: screenWidth * 0.07,
+                    size: screenWidth * 0.06,
                   ),
                 ),
               ],

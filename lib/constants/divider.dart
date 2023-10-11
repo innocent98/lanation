@@ -8,7 +8,7 @@ class MyDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Divider(
       color: app_color.darkTextSoft,
-      height: 2,
+      height: 1,
       thickness: 1,
     );
   }
